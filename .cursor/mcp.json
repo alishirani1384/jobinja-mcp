@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "jobinja": {
+      "command": "${workspaceFolder}\\.venv\\Scripts\\jobinja-mcp.exe",
+      "args": ["--log-level", "WARNING"]
+    }
+  }
+}

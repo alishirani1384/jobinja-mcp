@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "jobinja-mcp"
+version = "0.1.0"
+description = "Model Context Protocol server for Jobinja.ir: job search, companies, resume upload, applying and application tracking."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "mcp[cli]>=1.9",
+    "httpx>=0.27",
+    "beautifulsoup4>=4.12",
+    "lxml>=5.0",
+    "diskcache>=5.6",
+    "pydantic>=2.6",
+    "uvicorn>=0.29",
+    "starlette>=0.37",
+    "websockets>=13",
+    "cryptography>=42",
+]
+
+[project.optional-dependencies]
+browser = ["playwright>=1.44"]
+redis = ["redis>=5.0"]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+jobinja-mcp = "jobinja_mcp.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/jobinja_mcp"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "tests"]
